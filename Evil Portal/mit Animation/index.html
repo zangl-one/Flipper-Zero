@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,23 +59,15 @@
 
         .AGB {
             text-align: left;
-            background: #1f1f1f;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 350px;
+            background-color: #1f1f1f;
+            width: 90%;
             display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            margin: 100px;
-            margin-left: 0;
+            padding-top: 50px;
         }
 
         .AGB h1 {
             color: #f0f0f0;
-            margin-top: 150px;
+            margin-top: 16px;
             margin-bottom: 16px;
         }
 
@@ -147,6 +140,7 @@
         }
     </Style>
 </head>
+
 <body>
     <div class="Anmeldefenster" id="anmeldefenster">
         <h1>FREE WIFI</h1>
@@ -155,7 +149,7 @@
             <input name="password" type="password" id="passwordInput" placeholder="Passwort" required>
             <label>
                 <input type="checkbox" required> Ich akzeptiere die <a href="#agb" id="agbLink">AGB</a>
-            </label> 
+            </label>
             <button type="submit">Anmelden</button>
         </form>
     </div>
@@ -172,22 +166,31 @@
         <h1>Allgemeine Geschäftsbedingungen zum "Freien" Wlan</h1>
         <h2>1. Zugang zum Nichts</h2>
         <p>
-            Mit dem Anhaken der Checkbox bestätigen Sie hiermit feierlich, dass Sie vollen Zugang zu einem WLAN erhalten, das so frei von Internet ist wie der Himmel von fliegenden Schweinen. Es ist völlig, absolut und uneingeschränkt nutzlos.
+            Mit dem Anhaken der Checkbox bestätigen Sie hiermit feierlich, dass Sie vollen Zugang zu einem WLAN
+            erhalten, das so frei von Internet ist wie der Himmel von fliegenden Schweinen. Es ist völlig, absolut und
+            uneingeschränkt nutzlos.
         </p>
         <h2>2. Datenernte</h2>
         <p>
-            Sie erkennen an, dass diese Seite eine Fassade ist – so echt wie ein Einhorn auf Rollschuhen. Wir sammeln Benutzernamen wie ein Hamster Nüsse für den Winterschlaf. Keine Sorge, wir bewundern sie nur und tun... nichts Böses damit. Versprochen. *Hust*.
+            Sie erkennen an, dass diese Seite eine Fassade ist – so echt wie ein Einhorn auf Rollschuhen. Wir sammeln
+            Benutzernamen wie ein Hamster Nüsse für den Winterschlaf. Keine Sorge, wir bewundern sie nur und tun...
+            nichts Böses damit. Versprochen. *Hust*.
         </p>
         <h2>3. Haftungsausschluss</h2>
         <p>
-            Sollte durch ein Wunder das WLAN tatsächlich funktionieren und ein schwarzes Loch entstehen, das Ihre digitalen Fußabdrücke verschlingt, ist unsere Haftung so existent wie der besagte Dienst – nämlich nicht vorhanden.
+            Sollte durch ein Wunder das WLAN tatsächlich funktionieren und ein schwarzes Loch entstehen, das Ihre
+            digitalen Fußabdrücke verschlingt, ist unsere Haftung so existent wie der besagte Dienst – nämlich nicht
+            vorhanden.
         </p>
         <h2>4. Ewige Bindung</h2>
         <p>
-            Durch das Verwenden unseres "Dienstes" bestätigen Sie, dass Sie uns im Tausch gegen eine lebenslange Nicht-Leistung Ihre Seele übertragen haben. Keine Sorge, wir sammeln sie nur und stellen sie neben unseren Pokalen für "Das am wenigsten funktionierende WLAN" aus.
+            Durch das Verwenden unseres "Dienstes" bestätigen Sie, dass Sie uns im Tausch gegen eine lebenslange
+            Nicht-Leistung Ihre Seele übertragen haben. Keine Sorge, wir sammeln sie nur und stellen sie neben unseren
+            Pokalen für "Das am wenigsten funktionierende WLAN" aus.
         </p>
         <h3>
-            Mit dem Betätigen des "Anmelden"-Buttons bestätigen Sie, dass Sie nicht wirklich gelesen haben, was hier steht, und dass Sie uns erlauben, einen kleinen, aber feinen Schmunzler auf Ihre Kosten zu haben.
+            Mit dem Betätigen des "Anmelden"-Buttons bestätigen Sie, dass Sie nicht wirklich gelesen haben, was hier
+            steht, und dass Sie uns erlauben, einen kleinen, aber feinen Schmunzler auf Ihre Kosten zu haben.
         </h3>
         <button id="backToLogin">Zurück zum Login</button>
     </div>
@@ -196,13 +199,13 @@
         var anmeldefenster = document.getElementById('anmeldefenster');
         var agbContent = document.getElementById('agbContent');
 
-        document.getElementById('agbLink').onclick = function(event) {
+        document.getElementById('agbLink').onclick = function (event) {
             event.preventDefault();
             anmeldefenster.style.display = 'none';
             agbContent.style.display = 'block';
         };
 
-        document.getElementById('backToLogin').onclick = function(event) {
+        document.getElementById('backToLogin').onclick = function (event) {
             agbContent.style.display = 'none';
             anmeldefenster.style.display = 'block';
         };
@@ -240,7 +243,7 @@
 
         for (let i = 0; i < 100; i++) {
             let span = document.createElement('span');
-            
+
             span.innerText = characters[Math.floor(Math.random() * characters.length)];
             span.style.left = Math.random() * window.innerWidth + 'px';
             span.style.top = Math.random() * -500 + 'px';
@@ -251,7 +254,7 @@
             matrix.appendChild(span);
         }
 
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
             event.preventDefault();
             var message = messages.shift();
             typeMessage(message, 0);
@@ -276,7 +279,8 @@
             }, 5000);
         });
 
-        
+
     </script>
 </body>
+
 </html>
