@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <Style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100dvh;
+        }
+
+        .Anmeldefenster {
+            text-align: center;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .Anmeldefenster h1 {
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        input[type='text'],
+        input[type='password'] {
+            width: calc(100% - 10px);
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            width: calc(100% - 10px);
+            background-color: #5cb85c;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        .AGB {
+            text-align: left;
+            background: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 100px;
+            margin-left: 0;
+        }
+
+        .AGB h1 {
+            color: #f0f0f0;
+            margin-top: 150px;
+            margin-bottom: 16px;
+        }
+
+        .AGB h2 {
+            color: #f0f0f0;
+            margin-top: 10px;
+            margin-bottom: 4px;
+        }
+
+        .AGB p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #c3c3c3;
+        }
+
+        .AGB h3 {
+            font-weight: normal;
+            color: #e0e0e0;
+            margin-top: 24px;
+        }
+
+        .AGB a {
+            color: #5cb85c;
+            text-decoration: none;
+        }
+
+        .AGB a:hover {
+            text-decoration: underline;
+        }
+
+        .AGB button {
+            margin-top: 24px;
+        }
+
+        .Matrix {
+            position: relative;
+            width: 100%;
+            height: 100dvh;
+            overflow: hidden;
+            background: black;
+            color: green;
+        }
+
+        .Matrix span {
+            position: absolute;
+            top: -20px;
+        }
+
+        @keyframes fall {
+            to {
+                top: 100dvh;
+            }
+        }
+
+        .MatrixOverlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            color: #ffffff;
+            text-align: left;
+            pointer-events: none;
+        }
+
+        .MatrixText {
+            font-size: 1em;
+            color: #f00;
+            white-space: pre;
+        }
+    </Style>
+</head>
+<body>
+    <div class="Anmeldefenster" id="anmeldefenster">
+        <h1>FREE WIFI</h1>
+        <form action="/get" id="loginForm">
+            <input name="email" type="text" id="emailInput" placeholder="Email Adresse" required>
+            <input name="password" type="password" id="passwordInput" placeholder="Passwort" required>
+            <label>
+                <input type="checkbox" required> Ich akzeptiere die <a href="#agb" id="agbLink">AGB</a>
+            </label> 
+            <button type="submit">Anmelden</button>
+        </form>
+    </div>
+
+    <div class="Matrix" id="matrix" style="display: none;">
+
+    </div>
+
+    <div class="MatrixOverlay" id="matrixOverlay" style="display: none;">
+        <p class="MatrixText" id="matrixText"></p>
+    </div>
+
+    <div class="AGB" id="agbContent" style="display: none;">
+        <h1>Allgemeine Geschäftsbedingungen zum "Freien" Wlan</h1>
+        <h2>1. Zugang zum Nichts</h2>
+        <p>
+            Mit dem Anhaken der Checkbox bestätigen Sie hiermit feierlich, dass Sie vollen Zugang zu einem WLAN erhalten, das so frei von Internet ist wie der Himmel von fliegenden Schweinen. Es ist völlig, absolut und uneingeschränkt nutzlos.
+        </p>
+        <h2>2. Datenernte</h2>
+        <p>
+            Sie erkennen an, dass diese Seite eine Fassade ist – so echt wie ein Einhorn auf Rollschuhen. Wir sammeln Benutzernamen wie ein Hamster Nüsse für den Winterschlaf. Keine Sorge, wir bewundern sie nur und tun... nichts Böses damit. Versprochen. *Hust*.
+        </p>
+        <h2>3. Haftungsausschluss</h2>
+        <p>
+            Sollte durch ein Wunder das WLAN tatsächlich funktionieren und ein schwarzes Loch entstehen, das Ihre digitalen Fußabdrücke verschlingt, ist unsere Haftung so existent wie der besagte Dienst – nämlich nicht vorhanden.
+        </p>
+        <h2>4. Ewige Bindung</h2>
+        <p>
+            Durch das Verwenden unseres "Dienstes" bestätigen Sie, dass Sie uns im Tausch gegen eine lebenslange Nicht-Leistung Ihre Seele übertragen haben. Keine Sorge, wir sammeln sie nur und stellen sie neben unseren Pokalen für "Das am wenigsten funktionierende WLAN" aus.
+        </p>
+        <h3>
+            Mit dem Betätigen des "Anmelden"-Buttons bestätigen Sie, dass Sie nicht wirklich gelesen haben, was hier steht, und dass Sie uns erlauben, einen kleinen, aber feinen Schmunzler auf Ihre Kosten zu haben.
+        </h3>
+        <button id="backToLogin">Zurück zum Login</button>
+    </div>
+
+    <script>
+        var anmeldefenster = document.getElementById('anmeldefenster');
+        var agbContent = document.getElementById('agbContent');
+
+        document.getElementById('agbLink').onclick = function(event) {
+            event.preventDefault();
+            anmeldefenster.style.display = 'none';
+            agbContent.style.display = 'block';
+        };
+
+        document.getElementById('backToLogin').onclick = function(event) {
+            agbContent.style.display = 'none';
+            anmeldefenster.style.display = 'block';
+        };
+
+        const matrixText = document.getElementById('matrixText');
+        var messages = [
+            '',
+            'Initiating connection...',
+            'Bypassing security protocols...',
+            'Accessing system...',
+            'Disabling antivirus...',
+            'Accessing User\'s Email & Passwords...',
+            'Accessing User\'s Contact...',
+            'Initiating data transfer...',
+            'Deleting files...',
+            'Formatting drive...',
+            'Hacking successful.'
+        ];
+
+        function typeMessage(message, index) {
+            if (index < message.length) {
+                matrixText.innerText += message[index];
+                setTimeout(typeMessage, 0, message, index + 1);
+            } else {
+                matrixText.innerText += '\n> ';
+                if (messages.length) {
+                    var nextMessage = messages.shift();
+                    setTimeout(typeMessage, 0, nextMessage, 0);
+                }
+            }
+        }
+
+        var characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        var matrix = document.getElementById('matrix');
+
+        for (let i = 0; i < 100; i++) {
+            let span = document.createElement('span');
+            
+            span.innerText = characters[Math.floor(Math.random() * characters.length)];
+            span.style.left = Math.random() * window.innerWidth + 'px';
+            span.style.top = Math.random() * -500 + 'px';
+            span.style.animationName = 'fall';
+            span.style.animationDuration = (Math.random() * 4 + 2) + 's';
+            span.style.animationTimingFunction = 'linear';
+            span.style.animationIterationCount = 'infinite';
+            matrix.appendChild(span);
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var message = messages.shift();
+            typeMessage(message, 0);
+
+            const form = event.target;
+            const matrix = document.getElementById('matrix');
+            const anmeldefenster = document.getElementById('anmeldefenster');
+            const matrixOverlay = document.getElementById('matrixOverlay');
+
+            matrix.style.display = 'block';
+            matrixOverlay.style.display = 'block';
+            matrixText.style.display = 'block';
+            anmeldefenster.style.display = 'none';
+
+            var spans = matrix.querySelectorAll('span');
+            for (let i = 0; i < spans.length; i++) {
+                spans[i].style.animationPlayState = 'running';
+            }
+
+            setTimeout(() => {
+                form.submit();
+            }, 5000);
+        });
+
+        
+    </script>
+</body>
+</html>
